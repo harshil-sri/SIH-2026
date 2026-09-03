@@ -1,0 +1,21 @@
+# datasets & artifacts — never commit
+datasets/
+data/
+*.pcap
+*.pcapng
+*.npz
+*.parquet
+models/artifacts/
+
+# env / tooling
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS noise
+*.Zone.Identifier
+.DS_Store
+*.Zone.Identifier
+replay/logs/
+scripts/download_aria.sh

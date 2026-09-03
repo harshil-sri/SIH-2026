@@ -1,0 +1,11 @@
+Test start: 2026-08-26 10:58:24.984020 ...
+Test complete: 2026-08-26 10:58:45.010346
+Actual: 16181 packets (4425276 bytes) sent in 20.02 seconds
+Rated: 220972.9 Bps, 1.76 Mbps, 807.98 pps
+Flows: 15185 flows, 758.25 fps, 16181 unique flow packets, 0 unique non-flow packets
+Statistics for network device: veth-src
+	Successful packets:        16181
+	Failed packets:            0
+	Truncated packets:         0
+	Retried packets (ENOBUFS): 0
+	Retried packets (EAGAIN):  0

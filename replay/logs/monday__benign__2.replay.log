@@ -1,0 +1,171 @@
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Test start: 2026-09-03 16:51:19.823587 ...
+Actual: 8624 packets (3405404 bytes) sent in 30.00 seconds
+Rated: 113487.8 Bps, 0.907 Mbps, 287.40 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 17899 packets (8787468 bytes) sent in 60.01 seconds
+Rated: 146432.0 Bps, 1.17 Mbps, 298.26 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 23614 packets (10980708 bytes) sent in 90.01 seconds
+Rated: 121989.4 Bps, 0.975 Mbps, 262.33 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 30058 packets (13994791 bytes) sent in 120.02 seconds
+Rated: 116598.8 Bps, 0.932 Mbps, 250.43 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 43711 packets (20749168 bytes) sent in 150.09 seconds
+Rated: 138240.6 Bps, 1.10 Mbps, 291.22 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 53298 packets (24861413 bytes) sent in 180.11 seconds
+Rated: 138031.6 Bps, 1.10 Mbps, 295.91 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 63091 packets (29063397 bytes) sent in 210.11 seconds
+Rated: 138318.5 Bps, 1.10 Mbps, 300.26 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 75896 packets (34844734 bytes) sent in 240.14 seconds
+Rated: 145101.4 Bps, 1.16 Mbps, 316.04 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 80011 packets (35826707 bytes) sent in 270.14 seconds
+Rated: 132622.2 Bps, 1.06 Mbps, 296.18 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Actual: 92183 packets (40235816 bytes) sent in 300.23 seconds
+Rated: 134015.8 Bps, 1.07 Mbps, 307.03 pps
+Warning in flows.c:flow_decode() line 198:
+Unable to process unsupported DLT type: Ethernet (0x1)
+Test complete: 2026-09-03 16:56:30.013893
+Actual: 93048 packets (40420677 bytes) sent in 310.19 seconds
+Rated: 130309.2 Bps, 1.04 Mbps, 299.97 pps
+Flows: 10533 flows, 33.95 fps, 92271 unique flow packets, 707 unique non-flow packets
+Statistics for network device: veth-src
+	Successful packets:        93048
+	Failed packets:            0
+	Truncated packets:         0
+	Retried packets (ENOBUFS): 0
+	Retried packets (EAGAIN):  0
