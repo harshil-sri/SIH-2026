@@ -36,7 +36,7 @@ def load_union(features_dir: Path):
     meta_cols = {"label", "is_attack", "slice_id", "bucket"}
     feat_f = [c for c in (fdf.columns if fdf is not None else []) if c not in meta_cols]
     feat_s = [c for c in (sdf.columns if sdf is not None else []) if c not in meta_cols]
-    union = sorted(set(feat_f) | set(feat_s))
+    union = sorted(set(feat_f) | set(feat_s) | meta_cols)
     parts = []
     for df, feats, view in ((fdf, feat_f, "flow"), (sdf, feat_s, "src")):
         if df is None or not len(df):
@@ -88,18 +88,30 @@ def main() -> None:
           f"{big.slice_id.nunique()} slices")
 
     le = LabelEncoder()
-    y = le.fit_transform(big["label"])
+    y = pd.Series(le.fit_transform(big["label"]), index=big.index)
 
-    gss = GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=42)
-    tr_idx, te_idx = next(gss.split(big, groups=big["slice_id"]))
-    X = big.drop(columns=["label", "is_attack", "slice_id"]).astype(float)
-    Xtr, Xte, ytr, yte = X.iloc[tr_idx], X.iloc[te_idx], y[tr_idx], y[te_idx]
+    # stratified split at slice level. classes with only 1 slice go entirely to train.
+    slice_labels = big[["slice_id", "label"]].drop_duplicates()
+    tr_slices, te_slices = set(), set()
+    for lbl in slice_labels["label"].unique():
+        sid_s = slice_labels.loc[slice_labels["label"] == lbl, "slice_id"].tolist()
+        if len(sid_s) <= 1:
+            tr_slices.update(sid_s)
+        else:
+            n_test = max(1, int(len(sid_s) * 0.25))
+            te_slices.update(sid_s[-n_test:])
+            tr_slices.update(sid_s[:-n_test])
+    tr_mask = big["slice_id"].isin(tr_slices)
+    te_mask = big["slice_id"].isin(te_slices)
+    X = big.drop(columns=["label", "is_attack", "slice_id", "view"]).astype(float)
+    Xtr, Xte = X[tr_mask], X[te_mask]
+    ytr, yte = y[tr_mask], y[te_mask]
 
     sw = compute_sample_weight("balanced", ytr)
     model = xgb.XGBClassifier(
         n_estimators=300, max_depth=8, learning_rate=0.15, subsample=0.8,
         colsample_bytree=0.8, tree_method="hist", eval_metric="mlogloss",
-        n_jobs=8, random_state=42)
+        n_jobs=8, random_state=42, num_class=len(le.classes_))
     model.fit(Xtr, ytr, sample_weight=sw, verbose=False)
 
     pred = model.predict(Xte)
@@ -161,7 +173,7 @@ def main() -> None:
         shap_top = [f"(shap skipped: {e})"]
 
     metrics = {
-        "n_rows": int(len(X)), "n_train": int(len(tr_idx)), "n_test": int(len(te_idx)),
+        "n_rows": int(len(X)), "n_train": int(tr_mask.sum()), "n_test": int(te_mask.sum()),
         "macro_f1": round(float(report["macro avg"]["f1-score"]), 4),
         "accuracy": round(float(report["accuracy"]), 4),
         "pr_auc_per_class": prauc,
