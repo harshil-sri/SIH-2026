@@ -36,6 +36,14 @@
     </div>
   </header>
 
+  <!-- ═══ NAVIGATION ═════════════════════════════════════════════════════ -->
+  <nav class="dash-nav">
+    <a href="#telemetry" class="nav-btn active">TELEMETRY</a>
+    <a href="#alerts" class="nav-btn">ALERT FEED</a>
+    <a href="#diagnostics" class="nav-btn">DIAGNOSTICS</a>
+  </nav>
+
+  <div id="view-diagnostics" class="route-view" style="display: none;">
   <!-- ═══ DIODE INTEGRITY ════════════════════════════════════════════════ -->
   <section class="diode" aria-label="Data diode integrity">
     <div class="diode-title"><span>[ DATA DIODE INTEGRITY ]</span><span id="diode-verdict" class="pill">CHECKING</span></div>
@@ -58,7 +66,9 @@
       NOT FILTERED, IT IS ABSENT. <span id="diode-proof">PROOF: PENDING</span>
     </p>
   </section>
+  </div>
 
+  <div id="view-telemetry" class="route-view active">
   <!-- ═══ PRIMARY TELEMETRY ══════════════════════════════════════════════ -->
   <section class="primary">
 
@@ -116,7 +126,9 @@
     <div class="stat"><dt>COMPUTE</dt><dd><output id="s-dev">--</output></dd></div>
     <div class="stat"><dt>MACRO F1</dt><dd><output id="s-f1">--</output></dd></div>
   </section>
+  </div>
 
+  <div id="view-alerts" class="route-view" style="display: none;">
   <!-- ═══ FEED + FAMILIES ════════════════════════════════════════════════ -->
   <section class="lower">
     <article class="panel panel-feed">
@@ -144,6 +156,7 @@
       <ol id="topfeat" class="topfeat"><li class="empty">NOT AVAILABLE</li></ol>
     </article>
   </section>
+  </div>
 
   <footer class="foot">
     <samp>SIH26145 &#8212; NTRO &#8212; FORWARD-ONLY DETECTION&#8482;</samp>

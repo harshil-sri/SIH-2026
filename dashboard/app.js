@@ -403,6 +403,37 @@ el.btnPause.addEventListener("click", () => {
   el.btnPause.textContent = paused ? "\u25B6 RESUME" : "\u2759\u2759 HOLD";
 });
 
+/* ── routing ─────────────────────────────────────────────────────────────── */
+function handleRouting() {
+  const hash = window.location.hash || '#telemetry';
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const views = document.querySelectorAll('.route-view');
+  
+  navBtns.forEach(btn => {
+    if (btn.getAttribute('href') === hash) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  views.forEach(view => {
+    view.style.display = 'none';
+  });
+
+  let targetId;
+  if (hash === '#telemetry') targetId = 'view-telemetry';
+  else if (hash === '#alerts') targetId = 'view-alerts';
+  else if (hash === '#diagnostics') targetId = 'view-diagnostics';
+  else targetId = 'view-telemetry';
+
+  const targetView = document.getElementById(targetId);
+  if (targetView) targetView.style.display = 'block';
+}
+
+window.addEventListener('hashchange', handleRouting);
+handleRouting();
+
 /* ── boot ────────────────────────────────────────────────────────────────── */
 drawTrend();
 pollHealth();
