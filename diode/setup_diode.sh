@@ -38,8 +38,8 @@ sudo ip netns exec "$NS_MON" ip link set veth-mon up
 sudo ip netns exec "$NS_SRC" ip link set lo up
 sudo ip netns exec "$NS_MON" ip link set lo up
 
-echo "[diode] POLICY LAYER: dropping ALL outbound traffic in $NS_MON"
-sudo ip netns exec "$NS_MON" iptables -A OUTPUT -j DROP
+echo "[diode] POLICY LAYER: dropping ALL outbound traffic on veth-mon in $NS_MON"
+sudo ip netns exec "$NS_MON" iptables -A OUTPUT -o veth-mon -j DROP
 
 # disable segment offload inside the namespaces: otherwise the kernel can
 # coalesce packets (GSO/GRO), producing fake >MTU packets in captures that
@@ -47,5 +47,14 @@ sudo ip netns exec "$NS_MON" iptables -A OUTPUT -j DROP
 sudo ip netns exec "$NS_SRC" ethtool -K veth-src tso off gso off gro off 2>/dev/null || true
 sudo ip netns exec "$NS_MON" ethtool -K veth-mon tso off gso off gro off 2>/dev/null || true
 
+echo "[diode] creating management veth pair for API access"
+sudo ip link add veth-mgt type veth peer name veth-host
+sudo ip link set veth-mgt netns "$NS_MON"
+sudo ip addr add 10.200.1.1/24 dev veth-host
+sudo ip link set veth-host up
+sudo ip netns exec "$NS_MON" ip addr add 10.200.1.2/24 dev veth-mgt
+sudo ip netns exec "$NS_MON" ip link set veth-mgt up
+
 echo "[diode] done:"
 echo "    ns-source(10.200.0.1 @ veth-src) ==> one-way ==> (veth-mon @ 10.200.0.2) ns-monitor"
+echo "    ns-monitor(10.200.1.2 @ veth-mgt) <--> (veth-host @ 10.200.1.1) host proxy"

@@ -23,9 +23,14 @@ curl -sf http://127.0.0.1:8200/health >/dev/null || {
 }
 curl -s http://127.0.0.1:8200/health | tee "$ROOT/data/demo_health.json"
 
+echo "── [2.5/5] host tcp proxy for api"
+"$PY" "$ROOT/scripts/tcp_proxy.py" 10.200.1.1 8200 127.0.0.1 8200 > /dev/null 2>&1 &
+PROXY=$!
+sleep 1
+
 echo "── [3/5] monitor-side pipeline (recvfrom-only)"
-sudo ip netns exec ns-monitor env API=http://127.0.0.1:8200 \
-  timeout 300 "$PY" "$ROOT/serving/live_pipeline.py" --window-s 3 &
+sudo ip netns exec ns-monitor \
+  timeout 300 "$PY" "$ROOT/serving/live_pipeline.py" --window-s 3 --api http://10.200.1.1:8200 &
 LIVE=$!
 sleep 1
 
@@ -57,5 +62,5 @@ schedule
 [ "$ONCE" = 1 ] || schedule
 
 sleep 4   # let last buckets flush
-kill $LIVE $RELAY 2>/dev/null || true
+kill $LIVE $RELAY $PROXY 2>/dev/null || true
 echo "demo pass complete — see dashboard at http://localhost:8400"
