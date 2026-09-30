@@ -121,7 +121,14 @@ def fuse(p_attack_clf: float, ae_err: float | None = None,
     n_det_strands = len(strand_dets)
     gated = None
     if verdict != "OK" and n_det_strands == 0:
-        verdict, score, gated = "OK", min(0.24, score), "no detector strand — ML evidence only"
+        # ML-only evidence: force OK. But DOWN-WEIGHT into the informational
+        # band instead of a hard min(0.24, score): the flat clamp pinned nearly
+        # every benign window to an identical 0.240 (the weak ML crosses 0.25
+        # constantly), which reads as a frozen/broken feed. Multiplying by 0.24
+        # keeps the value safely below the 0.25 MEDIUM band (max 0.24) while
+        # preserving per-window variation — the zero-FP invariant is unchanged.
+        verdict, gated = "OK", "no detector strand — ML evidence only"
+        score = round(score * 0.24, 3)
 
     reasons = []
     if clf_term > 0.05 and label_pred and label_pred != "BENIGN":

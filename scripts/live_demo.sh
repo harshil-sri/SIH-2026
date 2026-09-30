@@ -24,8 +24,14 @@ ONCE=0
 echo "── [1/6] diode up"
 bash "$ROOT/diode/setup_diode.sh" >/dev/null
 
-echo "── [2/6] inference service + console (scripts/serve.sh start)"
-bash "$ROOT/scripts/serve.sh" start
+echo "── [2/6] inference service + console (scripts/serve.sh start prod)"
+# Force the production build on :8401 rather than auto: auto silently falls
+# back to the Vite dev server when the node build isn't detected, and dev then
+# lands on a random port if :8080 is taken (an unrelated local process holds it)
+# — so the console goes missing from the :8401 the demo script points at. Prod
+# fails loudly if the build is absent, which is the correct signal to run
+# `make frontend-build` first.
+bash "$ROOT/scripts/serve.sh" start prod
 
 echo "── [3/6] host tcp proxy (ns-monitor management veth -> host API)"
 "$PY" "$ROOT/scripts/tcp_proxy.py" 10.200.1.1 8200 127.0.0.1 8200 \
