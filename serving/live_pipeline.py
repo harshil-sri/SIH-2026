@@ -283,8 +283,19 @@ def main() -> None:
                       f"target={target} "
                       f"wrows={[(r.get('detector'), r.get('src')) for r in window_rows]}")
             for src in stale:
+                b = active.pop(src)
                 rows = tuple(window_rows) if src == target else ()
-                flush(src, active.pop(src), rows)
+                # Suppress trivial per-source windows. A spoofed-source flood
+                # creates THOUSANDS of one-shot buckets (one per forged IP);
+                # scoring each as its own window buries the real detections
+                # under a wall of duplicate OK rows (the "8000 windows, almost
+                # all OK" symptom). A bucket with fewer than MIN_SEQ packets
+                # carries no usable AE sequence, so unless it is the one holding
+                # detector evidence (target) there is nothing to score — drop
+                # it. Evidence-carrying and substantive buckets always flush.
+                if not rows and b.n < MIN_SEQ:
+                    continue
+                flush(src, b, rows)
             last_flush = now
         if data is None or tap_on:
             # with the tap active the relay datagrams are the same payloads the
